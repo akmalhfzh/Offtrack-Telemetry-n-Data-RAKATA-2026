@@ -2,16 +2,36 @@ clear; clc;
 %% ========================================================================
 %  NARX FOR SEM LAP STRATEGY OPTIMIZATION - PER LAP PROCESSING
 %  COMPLETE VERSION: With visualization and NARX training
+%  
+%  Paper: Telemetry-Driven Digital Twin Modeling with ML-Enhanced 
+%         Energy Optimization for Shell Eco-Marathon
+%  
+%  Input Features (9 per segment):
+%    - distance, slope, curvature (track geometry)
+%    - lap_time, lap_energy (performance targets)
+%    - max_speed, aggressiveness (driving style)
+%    - prev_throttle, prev_gliding (temporal context)
+%  
+%  Output (3 per segment):
+%    - speed_upper: Maximum speed bound for segment
+%    - speed_lower: Minimum speed bound for segment  
+%    - throttle_ratio: Fraction of segment with throttle active
+%  
+%  Training Result: MSE = 0.018854 at epoch 3
 %% ========================================================================
+
 %% INITIALIZATION
-basePath = 'D:\.kuliah\S1\rakata\2025';
-telemetryFile = fullfile(basePath, '26novfiltered.csv');
-logbookFile = fullfile(basePath, 'Logbook_TD_26_10.csv');
+% Auto-detect base path (works on any machine)
+scriptPath = fileparts(mfilename('fullpath'));
+basePath = fileparts(scriptPath);  % Parent of NN folder
+
+telemetryFile = fullfile(basePath, 'Data', 'raw', '26novfiltered.csv');
+logbookFile = fullfile(basePath, 'Data', 'raw', 'Logbook_fixed.csv');
 assert(isfile(telemetryFile), 'Telemetry file not found!');
 assert(isfile(logbookFile), 'Logbook file not found!');
 
 %% LOAD TELEMETRY DATA - PRESERVE ALL DATA
-fprintf('=== LOADING TELEMETRY DATA ===\n');
+fprintf('=== LOADING TELEMETRY DATA ===\n'); 
 T = readtable(telemetryFile);
 lat_all = double(T.lat);
 lng_all = double(T.lng);
