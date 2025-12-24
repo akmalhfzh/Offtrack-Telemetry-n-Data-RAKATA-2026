@@ -1,0 +1,31 @@
+╔═══════════════════════════════════════════════════════════════╗
+║     SEM DRIVER STRATEGY CARD - NARX V3 + GRADIENT PENALTY     ║
+╠═══════════════════════════════════════════════════════════════╣
+║   Target: 2.9 Wh | 409.7 km/kWh | 202 seconds             ║
+╠═══════════════════════════════════════════════════════════════╣
+║  DISTANCE   │  SPEED TARGET  │  ACTION                       ║
+╠═══════════════════════════════════════════════════════════════╣
+║     0- 100 m │     7 km/h     │  🛬 GLIDE (COAST)           ║
+║   100- 200 m │    21 km/h     │  ⚡ THROTTLE (ACCELERATE)    ║
+║   200- 300 m │    30 km/h     │  🛬 GLIDE (COAST)           ║
+║   300- 400 m │    27 km/h     │  🛬 GLIDE (COAST)           ║
+║   400- 500 m │    25 km/h     │  🛬 GLIDE (COAST)           ║
+║   500- 600 m │    24 km/h     │  🛬 GLIDE (COAST)           ║
+║   600- 700 m │    23 km/h     │  🛬 GLIDE (COAST)           ║
+║   700- 800 m │    23 km/h     │  🛬 GLIDE (COAST)           ║
+║   800- 900 m │    29 km/h     │  🛬 GLIDE (COAST)           ║
+║   900-1000 m │    29 km/h     │  🛬 GLIDE (COAST)           ║
+║  1000-1100 m │    27 km/h     │  🛬 GLIDE (COAST)           ║
+╠═══════════════════════════════════════════════════════════════╣
+║                     LED FEEDBACK RULES                        ║
+╠═══════════════════════════════════════════════════════════════╣
+║  🟢 GREEN:  Speed within ±2 km/h of target                    ║
+║  🟡 YELLOW: Speed ±3-5 km/h from target                       ║
+║  🔴 RED:    Speed >5 km/h off target                          ║
+╠═══════════════════════════════════════════════════════════════╣
+║                      AUDIO CUES                               ║
+╠═══════════════════════════════════════════════════════════════╣
+║  1 BEEP:  Throttle point ahead (50m)                          ║
+║  2 BEEPS: Start gliding NOW                                   ║
+║  3 BEEPS: Speed correction needed                             ║
+╚═══════════════════════════════════════════════════════════════╝
